@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+}
+
+.frame{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    background-color: #ccc;
+}
+
+.sidebar{
+    background-color: black;
+    color: white;
+}
+
+.sidebar a{
+    color: white;
+}
+
+.user-img{
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    border: 1px solid #eee;
+}
+
+/*內容區*/
+
+.main-content .title{
+    font-size: 30px;
+    color: blue;
+}
+
+.main-content .content{
+    width: 800px;;
+    height: 600px;
+    background-color: white;
+}

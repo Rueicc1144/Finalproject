@@ -1,0 +1,280 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter-Regular", sans-serif;
+    
+}
+
+.comment-container {
+    display: flex;
+    gap: 27px;
+    align-items: flex-start;
+    height: 310px;
+    width: calc(100% - 380px); /* 減去左右各 190px 的寬度 */
+    background: #dcdcdc;/*!記得刪除!這是提醒邊距用*/
+    margin: 0px auto 86px; /* 上無間距，下20px間距，左右各縮 190px */
+
+}
+
+.comment-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.user-info {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+/* 使用者大頭貼 */
+.user-placeholder {
+    background: #bdbdbd;
+    border-radius: 50%;
+    width: 76px;
+    height: 76px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 使用者大頭貼 */
+.user-photo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 76px;
+    height: 76px;
+
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* 使用者名稱 */
+.username {
+    color: #352f36;
+    font-family: "Inter-Regular", sans-serif;
+    font-size: 32px;
+}
+
+/* 發文時間 */
+.time-info {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.clock-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.time-info span {
+    color: #bdbdbd;
+    font-family: "Inter-Regular", sans-serif;
+    font-size: 20px;
+}
+
+/* 評價內文 */
+.review-text {
+    min-height: 122px; /* 設定最小高度 */
+    color: #352f36;
+    font-family: "Inter-Regular", sans-serif;
+    font-size: 32px;
+    width: 1200px;
+}
+
+/* 評分指標&正倒讚 */
+.review-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    background-color: #ffffff; /* 確保背景顏色與效果圖一致 */
+}
+
+/* 評分指標 */
+.review-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 70%;
+    height: 72px;
+    padding: 20px;
+    border: 1px solid #352f36;
+    border-radius: 60px;
+    background-color: #ffffff; /* 確保背景顏色與效果圖一致 */
+    
+}
+
+.review-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.review-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.review-score {
+    font-size: 28px;
+    color: #352f36;
+}
+
+/* 正倒讚 */
+.likes-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%; /* 調整寬度以確保布局對齊 */
+    height: 72px;
+    border: 1px solid #352f36;
+    border-radius: 60px;
+    background-color: #ffffff; /* 確保背景顏色與效果圖一致 */
+}
+
+.likes-dislikes {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.like-item, .dislike-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.like-icon, .dislike-icon {
+    width: 40px;
+    height: 40px;
+}
+
+/* 圖標間隔線 */
+.review-line {
+    border-left: 1px solid #352f36;
+    height: 24px;
+    margin: 0 5px;
+}
+
+/* 圖片區 */
+.review-image {
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* 裝圖片的容器 */
+.image-placeholder {
+    background: #585858;
+    position: relative;
+    width: 310px;
+    height: 310px;
+    overflow: hidden;
+    box-sizing: border-box;
+    object-fit: cover; /* 確保圖片填滿容器並保持比例 */
+    object-position: center; /* 確保圖片中心對齊 */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* 動畫: 過渡效果 */
+}
+
+/* 動畫: 當滑鼠懸浮在照片物件上時 */
+.image-placeholder:hover {
+    transform: translate(-10px, -10px);
+}
+
+/* 疊在原圖片的下張照片 */
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FFC619; /* 方形背景色，可以自行調整顏色和透明度 */
+}
+
+
+/* 圖片計算 */
+.image-count {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    box-sizing: border-box; /* 確保padding和border不會影響尺寸 */
+    padding: 5px; /* 可以調整內邊距確保不會跑出容器 */
+    background: rgba(255, 255, 255, 0.8); /* 背景色，可調整透明度 */
+    border-radius: 4px; /* 圓角 */
+}
+
+.image-count span {
+    font-size: 14px;
+    color: #352f36;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.navigation {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.nav-button:focus {
+    outline: none;
+}
+

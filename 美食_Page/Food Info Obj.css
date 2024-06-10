@@ -1,0 +1,160 @@
+:root {
+    --font-family: "Inter-Regular", sans-serif;
+    --font-size-large: 78px;
+    --font-size-medium: 40px;
+    --font-size-small: 32px;
+    --color-gray: #bdbdbd;
+    --color-background: #d9d9d9;
+    --color-border: #352f36;
+    --color-primary: #585858;
+}
+
+.FIO {
+    font-family: var(--font-family);
+    margin: 200px 0px 0px;
+    /* background: var(--color-primary); */
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    display: flex;
+
+}
+
+.FIO_Container {
+    display: flex;
+    width: 1400px;
+    height: 350px;
+    gap: 3%;
+    box-sizing: border-box;
+}
+
+/* 圖片區 */
+.food-image-box {
+    display: flex;
+    gap: 20px;
+}
+
+.food-image {
+    background: var(--color-primary);
+    width: 350px;
+    height: 350px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.food-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* 右側美食資訊 */
+.info-interface {
+    flex: 1;
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+/* 美食名稱 */
+.food-name {
+    position: absolute;
+    font-size: var(--font-size-medium);
+}
+
+/* 美食價格 */
+.price {
+    position: absolute;
+    display: flex;
+    align-items: flex-end;
+    font-size: var(--font-size-large);
+    left: 0;
+    bottom: 105px;
+}
+
+.price span:first-child {
+    font-size: var(--font-size-small);
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.original-price {
+    font-size: var(--font-size-small);
+    color: var(--color-gray);
+    text-decoration: line-through;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+/* 來自、收藏、分享 */
+.source-info {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    right: 0;
+    bottom: 120px;
+}
+
+/* 超商LOGO */
+.logo-container {
+    background-color: var(--color-background);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.food-logo {
+    width: 65%;
+    height: 65%;
+}
+
+/* 間隔線 */
+.source-line {
+    border-left: 1px solid var(--color-border);
+    height: 20px;
+    margin: 0 5px;
+}
+
+/* 評分區塊 */
+.review-container {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    bottom: 0px;
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    border: 2px solid var(--color-border);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.review-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.review-line {
+    border-left: 1px solid var(--color-border);
+    height: 20px;
+    margin: 0 5px;
+}
+
+.review-item img {
+    width: 60px;
+    height: 60px;
+}
+
+.review-item .review-score {
+    font-size: 50px;
+    color: var(--color-border);
+}

@@ -27,7 +27,6 @@ EX:資料夾"我的蒐藏"=> 主頁:collections.php
             <div class="sidebar-placeholder">
             <?php
 
-            // $uId = htmlspecialchars($_COOKIE['acc']);
             if(!isset($_SESSION["check"])){
                 $_SESSION["check"] = "No";
                 $_SESSION["Name"] = " ";

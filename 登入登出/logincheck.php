@@ -22,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['check']="Yes";
         $_SESSION['Name'] = $uName;
         $_SESSION['profile_image'] = $uImage;
+        $_SESSION["access"] = $row['uIdentify'];
         echo "<script>alert('登入成功!'); window.location.href='../搜尋功能/search.php';</script>";
     } else {
         $_SESSION['check']="No";

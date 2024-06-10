@@ -20,8 +20,8 @@ EX:資料夾"我的蒐藏"=> 主頁:collections.php
 登入判斷有新增其他SESSION，這部分文件建議可直接複製貼上
 
 導覽列:
-    ```php
-    
+
+
           <nav class="navBar">
               <div class="bergerMenu-placeholder">
                   <img class="bergerMenu" src="./NavBar_image/menu.png">
@@ -161,7 +161,7 @@ EX:資料夾"我的蒐藏"=> 主頁:collections.php
       --> 
     ```
 CSS:
-    ```css
+
     
 
       @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap');

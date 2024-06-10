@@ -21,6 +21,7 @@ EX:資料夾"我的蒐藏"=> 主頁:collections.php
 
 導覽列:
     ```php
+    
           <nav class="navBar">
               <div class="bergerMenu-placeholder">
                   <img class="bergerMenu" src="./NavBar_image/menu.png">
@@ -161,7 +162,8 @@ EX:資料夾"我的蒐藏"=> 主頁:collections.php
     ```
 CSS:
     ```css
-      <!--
+    
+
       @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap');
       
       body {
@@ -455,4 +457,4 @@ CSS:
       .menu-text {
           font-size: 20px;
       }
-      -->
+

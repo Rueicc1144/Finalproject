@@ -1,5 +1,10 @@
 2024/6/10 5:18更新
 ### 1.分析頁面完成
+只有管理員的帳號可以看
+
+### 2.側欄多一欄只有管理員帳號才看的到的連結
+改動是每個頁面的主頁php
+還有logincheck.php新增了一個access的SESSION
 
 2024/6/10更新
 ### 1.編輯個人檔案頁面時做成功
@@ -26,141 +31,155 @@ EX:資料夾"我的蒐藏"=> 主頁:collections.php
 
 
           <nav class="navBar">
-              <div class="bergerMenu-placeholder">
-                  <img class="bergerMenu" src="./NavBar_image/menu.png">
-                  <div class="sidebar-placeholder">
-                  <?php
-      
-                  if(!isset($_SESSION["check"])){
-                      $_SESSION["check"] = "No";
-                      $_SESSION["Name"] = " ";
-                  }
-                  $uId = $_SESSION['Name'];
-                  if($_SESSION["check"] == "Yes"){
-                          //以登入部分顯示
-                  ?>
-                      <div class="sidebar">
-                          <div class="header">個人設定</div>
-                          <div class="profile">
-                              <img class="profile-icon" src="<?php echo isset($_SESSION['profile_image']) ? $_SESSION['profile_image'] : './SB_image/userPhoto.jpg'; ?>" alt="User Icon" />
-                              <div class="user-id"><?php echo $uId;?></div>
-                          </div>
-                          <div class="menu">
-                              <div class="menu-item">  
-                                  <img class="icon" src="./SB_image/settings.png" alt="Edit Profile Icon" />
-                                  <div class="menu-text">
-                                      <a href="../編輯個人檔案/edit_profile.php">
-                                          編輯個人檔案
-                                      </a>
-                                  </div>
-                              </div>
-                              <div class="menu-item">
-                                  <img class="icon" src="./SB_image/bookmark.png" alt="Favorites Icon" />
-                                  <div class="menu-text">
-                                      <a href="../我的蒐藏/collections.php">
-                                          我的收藏
-                                      </a>
-                                  </div>
-                              </div>
-                              <div class="menu-item">
-                                  <img class="icon" src="./SB_image/bell.png" alt="Notifications Icon" />
-                                  <div class="menu-text">
-                                      <a href="../通知/notification.php">
-                                          通知 
-                                      </a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  <?php
-                  }else{
-                      //未登入部份顯示 
-                  ?>
-                      <div class="sidebar">
-                          <div class="header">個人設定</div>
-                          <div class="profile">
-                              <div class="profile">
-                                  <img class="profile-icon" src="./SB_image/userPhoto.jpg" alt="User Icon" />
-                                  <div class="user-id">User_ID</div>
-                              </div>
-                              <div class="user-id">
-                                  <a href="../登入登出/login.php">您還未登入！</a>
-                              </div>
-                          </div>
-                          <div class="menu">
-                              <div class="menu-item">
-                                  <img class="icon" src="./SB_image/settings.png" alt="Edit Profile Icon" />
-                                  <div class="menu-text">編輯個人檔案</div>
-                              </div>
-                              <div class="menu-item">
-                                  <img class="icon" src="./SB_image/bookmark.png" alt="Favorites Icon" />
-                                  <div class="menu-text">我的收藏</div>
-                              </div>
-                              <div class="menu-item">
-                                  <img class="icon" src="./SB_image/bell.png" alt="Notifications Icon" />
-                                  <div class="menu-text">通知</div>
-                              </div>
-                          </div>
-                      </div>
-                  <?php
-                  }
-                  
-                  ?>
-                      
-                  </div>
-              </div>
-      
-              <div class="logo-placeholder">
-                  <a href="../搜尋功能/search.php">
-                      <img class="logo" src="./NavBar_image/logo.png">
-                  </a>
-              </div>
-      
-              <?php
-              if(!isset($_SESSION["check"])){
-                  $_SESSION["check"] = "No";
-              }
-                  
-              if($_SESSION["check"] == "Yes"){
-                     //以登入部分顯示
-              
-              ?>
-              <div class="User-placeholder">
-                  <div class="hello-text">
-                      <div><?php echo $uId . " "; ?>您好</div>
-                  </div>
-                  <div class="photo-placeholder">
-                      <img class="user-photo" src="<?php echo isset($_SESSION['profile_image']) ? $_SESSION['profile_image'] : './SB_image/userPhoto.jpg'; ?>">
-                      <div class="hover-windows-placeholder">
-                          <div class="hover-windows">
-                              <div class="windows-placeholder">
-                                  <div class="setting">
-                                      <img class="setting-icon" src="./NavBar_Logged_image/setting.svg" />
-                                      <div class="setting-text"><a href="../編輯個人檔案/edit_profile.php">個人設定</a></div>
-                                  </div>
-                                  <div class="windows-line"></div>
-                                  <div class="log-out">
-                                      <img class="log-out-icon" src="./NavBar_Logged_image/log-out.svg" />
-                                      <div class="log-out-text"><a href="../登出/logout.php">登出</a></div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <?php
-              }else{
-                      //未登入部份顯示 
-      
-              ?>
-              <div class="button-placeholder">
-                  <a class="logIn-btn" href="../登入登出/login.php">登入</a>
-                  <a class="signUp-btn" href="../登入登出/register.php">註冊</a>
-              </div>
-              <?php
-              }
-              ?>
-          </nav>
+        <div class="bergerMenu-placeholder">
+            <img class="bergerMenu" src="./NavBar_image/menu.png">
+            <div class="sidebar-placeholder">
+            <?php
+
+            if(!isset($_SESSION["check"])){
+                $_SESSION["check"] = "No";
+                $_SESSION["Name"] = " ";
+            }
+            $uId = $_SESSION['Name'];
+            if($_SESSION["check"] == "Yes"){
+                    //以登入部分顯示
+            ?>
+                <div class="sidebar">
+                    <div class="header">個人設定</div>
+                    <div class="profile">
+                        <img class="profile-icon" src="<?php echo isset($_SESSION['profile_image']) ? $_SESSION['profile_image'] : './SB_image/userPhoto.jpg'; ?>" alt="User Icon" />
+                        <div class="user-id"><?php echo $uId;?></div>
+                    </div>
+                    <div class="menu">
+                        <?php
+                        if($_SESSION["access"] == "admin"){
+                        ?>
+                        <div class="menu-item">  
+                            <img class="icon" src="./SB_image/analysis.png" alt="Edit Profile Icon" />
+                            <div class="menu-text">
+                                <a href="../分析頁面/analysis.php">
+                                    查看分析報告
+                                </a>
+                            </div>
+                        </div>
+                        <?php
+                        }
+                        ?>
+                        <div class="menu-item">  
+                            <img class="icon" src="./SB_image/settings.png" alt="Edit Profile Icon" />
+                            <div class="menu-text">
+                                <a href="../編輯個人檔案/edit_profile.php">
+                                    編輯個人檔案
+                                </a>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img class="icon" src="./SB_image/bookmark.png" alt="Favorites Icon" />
+                            <div class="menu-text">
+                                <a href="../我的蒐藏/collections.php">
+                                    我的收藏
+                                </a>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <img class="icon" src="./SB_image/bell.png" alt="Notifications Icon" />
+                            <div class="menu-text">
+                                <a href="../通知/notification.php">
+                                    通知 
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php
+            }else{
+                //未登入部份顯示 
+            ?>
+                <div class="sidebar">
+                    <div class="header">個人設定</div>
+                    <div class="profile">
+                        <div class="profile">
+                            <img class="profile-icon" src="./SB_image/userPhoto.jpg" alt="User Icon" />
+                            <div class="user-id">User_ID</div>
+                        </div>
+                        <div class="user-id">
+                            <a href="../登入登出/login.php">您還未登入！</a>
+                        </div>
+                    </div>
+                    <div class="menu">
+                        <div class="menu-item">
+                            <img class="icon" src="./SB_image/settings.png" alt="Edit Profile Icon" />
+                            <div class="menu-text">編輯個人檔案</div>
+                        </div>
+                        <div class="menu-item">
+                            <img class="icon" src="./SB_image/bookmark.png" alt="Favorites Icon" />
+                            <div class="menu-text">我的收藏</div>
+                        </div>
+                        <div class="menu-item">
+                            <img class="icon" src="./SB_image/bell.png" alt="Notifications Icon" />
+                            <div class="menu-text">通知</div>
+                        </div>
+                    </div>
+                </div>
+            <?php
+            }
+            
+            ?>
+                
+            </div>
+        </div>
+
+        <div class="logo-placeholder">
+            <a href="../搜尋功能/search.php">
+                <img class="logo" src="./NavBar_image/logo.png">
+            </a>
+        </div>
+
+        <?php
+        if(!isset($_SESSION["check"])){
+            $_SESSION["check"] = "No";
+        }
+            
+        if($_SESSION["check"] == "Yes"){
+               //以登入部分顯示
+        
+        ?>
+        <div class="User-placeholder">
+            <div class="hello-text">
+                <div><?php echo $uId . " "; ?>您好</div>
+            </div>
+            <div class="photo-placeholder">
+                <img class="user-photo" src="<?php echo isset($_SESSION['profile_image']) ? $_SESSION['profile_image'] : './SB_image/userPhoto.jpg'; ?>">
+                <div class="hover-windows-placeholder">
+                    <div class="hover-windows">
+                        <div class="windows-placeholder">
+                            <div class="setting">
+                                <img class="setting-icon" src="./NavBar_Logged_image/setting.svg" />
+                                <div class="setting-text"><a href="../編輯個人檔案/edit_profile.php">個人設定</a></div>
+                            </div>
+                            <div class="windows-line"></div>
+                            <div class="log-out">
+                                <img class="log-out-icon" src="./NavBar_Logged_image/log-out.svg" />
+                                <div class="log-out-text"><a href="../登出/logout.php">登出</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php
+        }else{
+                //未登入部份顯示 
+
+        ?>
+        <div class="button-placeholder">
+            <a class="logIn-btn" href="../登入登出/login.php">登入</a>
+            <a class="signUp-btn" href="../登入登出/register.php">註冊</a>
+        </div>
+        <?php
+        }
+        ?>
+    </nav>
       --> 
     ```
 CSS:

@@ -39,13 +39,12 @@ session_start();
 </style>
 <body>
 <!-- 導覽列 -->
-<nav class="navBar">
+    <nav class="navBar">
         <div class="bergerMenu-placeholder">
             <img class="bergerMenu" src="./NavBar_image/menu.png">
             <div class="sidebar-placeholder">
             <?php
 
-            // $uId = htmlspecialchars($_COOKIE['acc']);
             if(!isset($_SESSION["check"])){
                 $_SESSION["check"] = "No";
                 $_SESSION["Name"] = " ";
@@ -61,6 +60,20 @@ session_start();
                         <div class="user-id"><?php echo $uId;?></div>
                     </div>
                     <div class="menu">
+                        <?php
+                        if($_SESSION["access"] == "admin"){
+                        ?>
+                        <div class="menu-item">  
+                            <img class="icon" src="./SB_image/analysis.png" alt="Edit Profile Icon" />
+                            <div class="menu-text">
+                                <a href="../分析頁面/analysis.php">
+                                    查看分析報告
+                                </a>
+                            </div>
+                        </div>
+                        <?php
+                        }
+                        ?>
                         <div class="menu-item">  
                             <img class="icon" src="./SB_image/settings.png" alt="Edit Profile Icon" />
                             <div class="menu-text">

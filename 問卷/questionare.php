@@ -115,7 +115,7 @@ session_start();
         </div>
 
         <div class="logo-placeholder">
-            <a href="../搜尋功能/search.php">
+            <a href="../搜尋功能/index.php">
                 <img class="logo" src="./NavBar_image/logo.png">
             </a>
         </div>

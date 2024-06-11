@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         die("語句準備失敗: " . $conn->error);
     }
 
-    $stmt->bind_param("ssssiiiii", $uEmail, $foodName, $reviewTime, $reviewText, $satietyReview, $preferReview, $priceReview, $likeCount, $dislike);
+    $stmt->bind_param("ssssdddii", $uEmail, $foodName, $reviewTime, $reviewText, $satietyReview, $preferReview, $priceReview, $likeCount, $dislike);
 
     if ($stmt->execute()) {
         echo "評論新增成功";

@@ -19,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (mysqli_num_rows($result) > 0) {
         $uName = $row['uName'];
         $uImage = $row['uPhoto'];
+        $_SESSION['email'] = $email;
         $_SESSION['check']="Yes";                                   
         $_SESSION['Name'] = $uName;
         $_SESSION['profile_image'] = $uImage;
